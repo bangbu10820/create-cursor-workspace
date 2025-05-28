@@ -1,6 +1,6 @@
 {
 	"name": "create-cursor-workspace",
-	"version": "0.0.1-alpha.2",
+	"version": "0.0.1-alpha.3",
 	"description": "CLI to create a new Cursor workspace",
 	"repository": {
 		"type": "git",
