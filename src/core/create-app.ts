@@ -116,6 +116,7 @@ export async function createAppWorkspace({
 					}
 
 					if (gitIsActuallyInstalled) {
+						console.log(cyan(`Checking Git URL access: ${submoduleUrl}...`));
 						accessGranted = await checkGitUrlAccess(submoduleUrl);
 					} else {
 						console.log(
@@ -211,10 +212,14 @@ export async function createAppWorkspace({
 						const addMoreResponse = await prompts(
 							[
 								{
-									type: "confirm",
+									type: "select",
 									name: "addMore",
-									message: "Add another submodule?",
-									initial: false,
+									message: "Would you like to add another submodule?",
+									choices: [
+										{ title: "Yes", value: true },
+										{ title: "No", value: false },
+									],
+									initial: 1,
 								},
 							],
 							{ onCancel: onSubmodulePromptCancel }
@@ -584,21 +589,22 @@ Copying template files to project root ${green(process.cwd())}...`)
 				console.log(green("Project Git repository initialized."));
 				const commitMessage =
 					submodulesToGuide.length > 0
-						? "Initial commit: workspace structure, config files, and submodules"
+						? "Initial commit: workspace structure, config files, and submodules setup"
 						: "Initial commit: workspace structure and config files";
 
 				if (submodulesToGuide.length > 0) {
-// 					console.log(
-// 						cyan(`
-// The .gitmodules file has been created/updated by 'git submodule add'.
-// Run ./setup-submodules.sh to clone and initialize them according to .env variables.
-// After that, remember to commit the .gitmodules file and the submodule entries:`)
-// 					);
-// 					console.log(yellow(`  git add .gitmodules`));
-// 					submodulesToGuide.forEach((sm) => {
-// 						console.log(yellow(`  git add ${sm.path}`));
-// 					});
-// 					console.log(yellow(`  git commit -m "Add and configure submodules"`));
+					console.log(
+						cyan(
+							`
+The .gitmodules file has been created/updated by the setup script (if submodules were added).
+Run ./setup-submodules.sh to ensure all submodules are cloned and initialized according to .env variables.
+After the script runs, commit all changes:`
+						)
+					);
+					console.log(yellow(`  git add .`));
+					console.log(
+						yellow(`  git commit -m "Add and initialize submodules"`)
+					);
 				} else {
 					console.log(cyan("Making initial commit..."));
 					try {
@@ -638,14 +644,11 @@ Submodule Configuration & Setup Guide:`)
 				)
 			);
 			console.log(yellow(`     ./setup-submodules.sh`));
-			// console.log(cyan(`3. After the script completes, commit the changes:`));
-			// console.log(yellow(`     git add .gitmodules`));
-			// submodulesToGuide.forEach((sm) => {
-			// 	console.log(yellow(`     git add ${sm.path}`));
-			// });
-			// console.log(
-			// 	yellow(`     git commit -m "Add and initialize submodules via script"`)
-			// );
+			console.log(cyan(`3. After the script completes, commit the changes:`));
+			console.log(yellow(`     git add .`));
+			console.log(
+				yellow(`     git commit -m "Add and initialize submodules via script"`)
+			);
 			console.log();
 		} else if (repoType === "submodule") {
 			console.log(
@@ -654,8 +657,8 @@ Submodule Setup Note:`)
 			);
 			console.log(
 				cyan(
-					"No submodules were added during initial setup. You can add them manually using the command: " +
-						"'git submodule add <repository_url> <path_to_submodule>'."
+					"No submodules were added during initial setup. " +
+						"You can add them manually using the command: 'git submodule add <repository_url> <path_to_submodule>'."
 				)
 			);
 			console.log(
