@@ -1,0 +1,10 @@
+{
+	"folders": [
+		{
+			"name": "<project-name>",
+			"path": ".",
+			"ignore": []
+		}
+	],
+	"settings": {}
+}

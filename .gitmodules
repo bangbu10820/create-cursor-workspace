@@ -1,0 +1,6 @@
+[submodule "my-app/untitled-wallet-mobile"]
+	path = my-app/untitled-wallet-mobile
+	url = git@gh_bangbu:Cyberk-vn/untitled-wallet-mobile.git
+[submodule "my-app/untitled-wallet-private"]
+	path = my-app/untitled-wallet-private
+	url = git@gh_bangbu:Cyberk-vn/untitled-wallet-private.git

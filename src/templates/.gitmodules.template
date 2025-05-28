@@ -1,0 +1,3 @@
+[submodule "repo-name"]
+	path = repo-name
+	url = ${SUBMODULE_REPO_URL}

@@ -1,0 +1,35 @@
+{
+	"name": "create-cursor-workspace",
+	"version": "0.0.1-alpha.1",
+	"description": "CLI to create a new Cursor workspace",
+	"main": "dist/index.js",
+	"bin": {
+		"create-cursor-workspace": "./dist/index.js"
+	},
+	"scripts": {
+		"build": "tsc",
+		"start": "npm run build && node dist/index.js"
+	},
+	"keywords": [
+		"cli",
+		"cursor",
+		"workspace",
+		"generator"
+	],
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"prompts": "^2.4.2",
+		"validate-npm-package-name": "^5.0.0",
+		"picocolors": "^1.0.0",
+		"fast-glob": "^3.3.0",
+		"cross-spawn": "^7.0.3"
+	},
+	"devDependencies": {
+		"typescript": "^5.0.0",
+		"@types/node": "^20.0.0",
+		"@types/prompts": "^2.4.0",
+		"@types/validate-npm-package-name": "^4.0.0",
+		"@types/cross-spawn": "^6.0.0"
+	}
+}
