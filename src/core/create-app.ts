@@ -588,17 +588,17 @@ Copying template files to project root ${green(process.cwd())}...`)
 						: "Initial commit: workspace structure and config files";
 
 				if (submodulesToGuide.length > 0) {
-					console.log(
-						cyan(`
-The .gitmodules file has been created/updated by 'git submodule add'.
-Run ./setup-submodules.sh to clone and initialize them according to .env variables.
-After that, remember to commit the .gitmodules file and the submodule entries:`)
-					);
-					console.log(yellow(`  git add .gitmodules`));
-					submodulesToGuide.forEach((sm) => {
-						console.log(yellow(`  git add ${sm.path}`));
-					});
-					console.log(yellow(`  git commit -m "Add and configure submodules"`));
+// 					console.log(
+// 						cyan(`
+// The .gitmodules file has been created/updated by 'git submodule add'.
+// Run ./setup-submodules.sh to clone and initialize them according to .env variables.
+// After that, remember to commit the .gitmodules file and the submodule entries:`)
+// 					);
+// 					console.log(yellow(`  git add .gitmodules`));
+// 					submodulesToGuide.forEach((sm) => {
+// 						console.log(yellow(`  git add ${sm.path}`));
+// 					});
+// 					console.log(yellow(`  git commit -m "Add and configure submodules"`));
 				} else {
 					console.log(cyan("Making initial commit..."));
 					try {
@@ -638,14 +638,14 @@ Submodule Configuration & Setup Guide:`)
 				)
 			);
 			console.log(yellow(`     ./setup-submodules.sh`));
-			console.log(cyan(`3. After the script completes, commit the changes:`));
-			console.log(yellow(`     git add .gitmodules`));
-			submodulesToGuide.forEach((sm) => {
-				console.log(yellow(`     git add ${sm.path}`));
-			});
-			console.log(
-				yellow(`     git commit -m "Add and initialize submodules via script"`)
-			);
+			// console.log(cyan(`3. After the script completes, commit the changes:`));
+			// console.log(yellow(`     git add .gitmodules`));
+			// submodulesToGuide.forEach((sm) => {
+			// 	console.log(yellow(`     git add ${sm.path}`));
+			// });
+			// console.log(
+			// 	yellow(`     git commit -m "Add and initialize submodules via script"`)
+			// );
 			console.log();
 		} else if (repoType === "submodule") {
 			console.log(

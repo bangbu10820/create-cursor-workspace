@@ -199,7 +199,8 @@ Success! Created ${bold(appName)} at ${cyan(projectPath)}`)
 
 	console.log(cyan(`  cd ${cdpath}`));
 	// Add other relevant commands for Cursor if any, e.g., how to open with Cursor
-	console.log(cyan("  code .") + " (or open with your preferred editor)");
+	console.log(cyan("  cursor .") + " (or open with your preferred editor)");
+	console.log(cyan(`  ./setup-submodules.sh`));
 	console.log();
 }
 
