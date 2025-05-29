@@ -1,6 +1,6 @@
 {
 	"name": "create-cursor-workspace",
-	"version": "0.0.1-alpha.3",
+	"version": "0.0.1-alpha.4",
 	"description": "CLI to create a new Cursor workspace",
 	"repository": {
 		"type": "git",
@@ -23,6 +23,10 @@
 		"generator"
 	],
 	"license": "ISC",
+	"files": [
+		"dist",
+		"src/templates"
+	],
 	"dependencies": {
 		"prompts": "^2.4.2",
 		"validate-npm-package-name": "^5.0.0",
