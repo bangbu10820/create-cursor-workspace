@@ -2,7 +2,7 @@ import { join, resolve, basename } from "node:path";
 import { green, cyan, red, yellow, bold } from "picocolors";
 import prompts from "prompts";
 import { mkdirSync, existsSync } from "node:fs";
-import { readFile, writeFile, unlink, chmod } from "node:fs/promises";
+import { readFile, writeFile, unlink, chmod, rename } from "node:fs/promises";
 import { copy } from "../helpers/copy";
 import { isGitInstalled } from "../helpers/is-git-installed";
 import { checkGitUrlAccess } from "../helpers/check-git-url-access";
@@ -294,6 +294,18 @@ Copying template files to project root ${green(process.cwd())}...`)
 				copyError
 			);
 			throw copyError;
+		}
+
+		// Rename gitignore.template to .gitignore
+		const gitignoreTemplatePath = join(process.cwd(), "gitignore.template");
+		const gitignorePath = join(process.cwd(), ".gitignore");
+		try {
+			if (existsSync(gitignoreTemplatePath)) {
+				await rename(gitignoreTemplatePath, gitignorePath);
+				console.log(cyan("Renamed gitignore.template to .gitignore"));
+			}
+		} catch (err) {
+			console.warn(yellow("Could not rename gitignore.template:"), err);
 		}
 
 		// --- Step 5: Process .code-workspace template ---
